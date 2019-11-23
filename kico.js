@@ -2,7 +2,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2019.11.13
+# Last Update: 2019.11.23
 
 一个可口的极简响应式前端框架。
 
@@ -167,8 +167,6 @@ Array.prototype.remove = function (value) {
             set: function () {
                 var img = get_images[current];
 
-                console.log("now is: " + current);
-
                 current === 0 ? image_box.prev.classList.add("ended") : image_box.prev.classList.remove("ended");
                 current === get_images.length - 1 ? image_box.next.classList.add("ended") : image_box.next.classList.remove("ended");
 
@@ -215,7 +213,6 @@ Array.prototype.remove = function (value) {
             actions.set();
         };
         image_box.next.onclick = function () {
-            console.log(get_images.length);
             if(current + 1 < get_images.length) current++;
 
             actions.set();
