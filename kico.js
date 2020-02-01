@@ -2,7 +2,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2019.11.23
+# Last Update: 2020.02.02
 
 一个可口的极简响应式前端框架。
 
@@ -65,12 +65,23 @@ Array.prototype.remove = function (value) {
 
             if(prop.child){
                 if(prop.child.constructor === Array){
-                    KStyle.each(prop.child, function (i) {
+                    KStyle.each(prop.child, (i) => {
                         obj.appendChild(i);
                     });
                 }
                 else{
                     obj.appendChild(prop.child);
+                }
+            }
+
+            if(prop.attr){
+                if(prop.attr.constructor === Array){
+                    KStyle.each(prop.attr, (i) => {
+                        obj.setAttribute(i.name, i.value);
+                    });
+                }
+                else if(prop.attr.constructor === Object){
+                    obj.setAttribute(prop.attr.name, prop.attr.value);
                 }
             }
 
@@ -149,7 +160,7 @@ Array.prototype.remove = function (value) {
     image_box.wrap = KStyle.create("div", {class: "ks-image", child: [
         image_box.prev, image_box.img, image_box.next, image_box.ball
     ]});
-    
+
     KStyle.image = function (selector) {
         var current = 0;
         var get_images = KStyle.selectAll(selector);

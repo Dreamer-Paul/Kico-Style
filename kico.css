@@ -4,7 +4,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2019.11.23
+# Last Update: 2020.02.02
 
 一个可口的极简响应式前端框架。
 
@@ -44,7 +44,7 @@ html.font-l{ font-size: 18px }
     --green: #27a17e;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 768px){
     html.font-auto{ font-size: 14px }
 }
 
@@ -81,8 +81,7 @@ body::-webkit-scrollbar-track{ border-radius: 0 }
 /* 1 - 容器
 -------------------------------- */
 .wrap{
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     max-width: 1200px;
     padding: 0 1.25em;
     box-sizing: content-box;
@@ -100,6 +99,9 @@ body::-webkit-scrollbar-track{ border-radius: 0 }
     padding-right: 0;
     padding: auto 0;
 }
+
+.pull-left{ float: left }
+.pull-right{ float: right }
 
 .clearfix:after{
     content: '';
