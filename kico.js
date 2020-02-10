@@ -2,7 +2,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2020.02.02
+# Last Update: 2020.02.10
 
 一个可口的极简响应式前端框架。
 
@@ -58,6 +58,7 @@ Array.prototype.remove = function (value) {
 
         if(prop){
             if(prop.id)    obj.id = prop.id;
+            if(prop.src)   obj.src = prop.src;
             if(prop.href)  obj.href = prop.href;
             if(prop.class) obj.className = prop.class;
             if(prop.text)  obj.innerText = prop.text;
