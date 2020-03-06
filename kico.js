@@ -384,16 +384,14 @@ Array.prototype.remove = function (value) {
                 var c = window.location.pathname;
 
                 var t = e.target.href.match(/#[\s\S]+/);
-                if(t) t = t[0];
-
-                t = ks.select(t);
+                if(t) t = ks.select(t[0]);
 
                 if(c === l){
                     e.preventDefault();
 
                     var top = t ? (offset ? t.offsetTop - offset : t.offsetTop) : 0;
 
-                    "scrollBehavior" in document.documentElement.style ? global.scrollTo({top: top, left: 0, behavior: "smooth"}) : global.scrollTo(top, 0);
+                    "scrollBehavior" in document.documentElement.style ? global.scrollTo({top: top, left: 0, behavior: "smooth"}) : global.scrollTo(0, top);
                 }
                 else{
                     console.log(c, l);
