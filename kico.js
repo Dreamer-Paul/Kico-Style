@@ -162,6 +162,21 @@ Array.prototype.remove = function (value) {
         image_box.prev, image_box.img, image_box.next, image_box.ball
     ]});
 
+    image_box.wrap.onclick = function (e) {
+        image_box.wrap.classList.add("remove");
+        setTimeout(function () {
+            try{
+                document.body.removeChild(image_box.wrap);
+                image_box.wrap.classList.remove("remove");
+            }
+            catch (err){}
+        }, 300);
+    };
+
+    image_box.img.onload = function () {
+        image_box.wrap.classList.remove("loading");
+    };
+
     KStyle.image = function (selector) {
         var current = 0;
         var get_images = KStyle.selectAll(selector);
@@ -202,29 +217,15 @@ Array.prototype.remove = function (value) {
             }
         });
 
-        // 设置图片
-        image_box.img.onclick = function () {
-            image_box.wrap.classList.add("remove");
-            setTimeout(function () {
-                try{
-                    document.body.removeChild(image_box.wrap);
-                    image_box.wrap.classList.remove("remove");
-                }
-                catch (err){}
-            }, 300);
-        };
-
-        image_box.img.onload = function () {
-            image_box.wrap.classList.remove("loading");
-        };
-
         // 设置按钮
-        image_box.prev.onclick = function () {
+        image_box.prev.onclick = function (e) {
+            e.stopPropagation();
             if(current - 1 >= 0) current--;
 
             actions.set();
         };
-        image_box.next.onclick = function () {
+        image_box.next.onclick = function (e) {
+            e.stopPropagation();
             if(current + 1 < get_images.length) current++;
 
             actions.set();
