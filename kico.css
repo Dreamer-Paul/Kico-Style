@@ -4,7 +4,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2020.02.10
+# Last Update: 2020.3.31
 
 一个可口的极简响应式前端框架。
 
@@ -533,44 +533,23 @@ fieldset{
 }
 
 fieldset > *{ margin-bottom: 1em }
-fieldset:last-child, fieldset > *:last-child{ margin-bottom: 0 }
+fieldset:last-child{ margin-bottom: 0 }
 
-fieldset input, fieldset select, fieldset textarea{ width: 100% }
+fieldset legend{ margin: 0 0 1em }
 
-/* -- 控件描述 */
+fieldset input:not([type="checkbox"]):not([type="radio"]), fieldset select, fieldset textarea{ width: 100% }
+
+/* -- 控件模块 */
 fieldset label{
     display: block;
     user-select: none;
     margin-bottom: 1em;
 }
-fieldset label:last-child{
-    margin-right: 0 !important;
-    margin-bottom: 0 !important;
-}
 
-/* -- 含按钮描述块 */
-fieldset label.submit{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-fieldset label.submit span{ flex: 0 0 100% }
-fieldset label.submit input{
-    width: auto;
-    flex: 1 1 auto;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-fieldset label.submit button{
-    vertical-align: middle;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-fieldset legend{ margin: 0 0 1em }
-fieldset select{ width: 100% }
+/* -- 控件标题 */
 fieldset label span:first-child{
     font-size: .85em;
+    white-space: nowrap;
     margin-bottom: .5rem;
     display: inline-block;
     color: rgba(0, 0, 0, .6);
@@ -582,14 +561,28 @@ fieldset label.required span:after{
     margin-left: .25em;
 }
 
+/* -- 单行组合 */
+fieldset .has-group{ display: flex }
+
+fieldset .has-group input:not([type="checkbox"]):not([type="radio"]){
+    width: auto;
+    flex: 1 1 auto;
+    border-right: none;
+}
+
+fieldset .has-group .btn{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
 /* -- 单行表单 */
-form.inline fieldset label, fieldset.inline label{
+form .inline label{
     display: inline-block;
+    vertical-align: bottom;
     margin: 0 .75em .75em 0;
 }
-form.inline fieldset :not([type="checkbox"]):not([type="radio"]), fieldset.inline input:not([type="checkbox"]):not([type="radio"]){ width: auto }
 
-/* - 表格*/
+/* - 表格 */
 .ks-table{
     width: 100%;
     overflow-x: auto;
@@ -642,7 +635,6 @@ table.fill > thead > tr{
 }
 table.fill > thead > tr > th, table.fill > thead > tr > td{
     color: #fff;
-    padding: 1em .75em;
 }
 
 table.fill > tbody{
@@ -793,6 +785,12 @@ iframe{
     .col-l-right-10{ left: 83.3333%; }
     .col-l-right-11{ left: 91.6666%; }
     .col-l-right-12{ left: 100%; }
+}
+
+/* --- 自适应的 */
+.row .col-auto{
+    flex: 1 1 auto;
+    max-width: 100%;
 }
 
 /* --- 固定的 */
@@ -1419,6 +1417,6 @@ notice{
 
 /* ----
 
-Copyright (C) 2019 Dreamer-Paul.
+Copyright (C) 2020 Dreamer-Paul.
 
 ---- */
