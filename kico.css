@@ -703,97 +703,11 @@ iframe{
 }
 
 /* -- 网格主体 */
-@media screen and (min-width: 600px){
-    .col-s-left-1{ right: 8.3333%; }
-    .col-s-left-2{ right: 16.6666%; }
-    .col-s-left-3{ right: 25%; }
-    .col-s-left-4{ right: 33.3333%; }
-    .col-s-left-5{ right: 41.6666%; }
-    .col-s-left-6{ right: 50%; }
-    .col-s-left-7{ right: 58.3333%; }
-    .col-s-left-8{ right: 66.6666%; }
-    .col-s-left-9{ right: 75%; }
-    .col-s-left-10{ right: 83.3333%; }
-    .col-s-left-11{ right: 91.6666%; }
-    .col-s-left-12{ right: 100%; }
-
-    .col-s-right-1{ left: 8.3333%; }
-    .col-s-right-2{ left: 16.6666%; }
-    .col-s-right-3{ left: 25%; }
-    .col-s-right-4{ left: 33.3333%; }
-    .col-s-right-5{ left: 41.6666%; }
-    .col-s-right-6{ left: 50%; }
-    .col-s-right-7{ left: 58.3333%; }
-    .col-s-right-8{ left: 66.6666%; }
-    .col-s-right-9{ left: 75%; }
-    .col-s-right-10{ left: 83.3333%; }
-    .col-s-right-11{ left: 91.6666%; }
-    .col-s-right-12{ left: 100%; }
-}
-
-@media screen and (min-width: 900px){
-    .col-m-left-1{ right: 8.3333%; }
-    .col-m-left-2{ right: 16.6666%; }
-    .col-m-left-3{ right: 25%; }
-    .col-m-left-4{ right: 33.3333%; }
-    .col-m-left-5{ right: 41.6666%; }
-    .col-m-left-6{ right: 50%; }
-    .col-m-left-7{ right: 58.3333%; }
-    .col-m-left-8{ right: 66.6666%; }
-    .col-m-left-9{ right: 75%; }
-    .col-m-left-10{ right: 83.3333%; }
-    .col-m-left-11{ right: 91.6666%; }
-    .col-m-left-12{ right: 100%; }
-
-    .col-m-right-1{ left: 8.3333%; }
-    .col-m-right-2{ left: 16.6666%; }
-    .col-m-right-3{ left: 25%; }
-    .col-m-right-4{ left: 33.3333%; }
-    .col-m-right-5{ left: 41.6666%; }
-    .col-m-right-6{ left: 50%; }
-    .col-m-right-7{ left: 58.3333%; }
-    .col-m-right-8{ left: 66.6666%; }
-    .col-m-right-9{ left: 75%; }
-    .col-m-right-10{ left: 83.3333%; }
-    .col-m-right-11{ left: 91.6666%; }
-    .col-m-right-12{ left: 100%; }
-}
-
-@media screen and (min-width: 900px){
-    .col-l-left-1{ right: 8.3333%; }
-    .col-l-left-2{ right: 16.6666%; }
-    .col-l-left-3{ right: 25%; }
-    .col-l-left-4{ right: 33.3333%; }
-    .col-l-left-5{ right: 41.6666%; }
-    .col-l-left-6{ right: 50%; }
-    .col-l-left-7{ right: 58.3333%; }
-    .col-l-left-8{ right: 66.6666%; }
-    .col-l-left-9{ right: 75%; }
-    .col-l-left-10{ right: 83.3333%; }
-    .col-l-left-11{ right: 91.6666%; }
-    .col-l-left-12{ right: 100%; }
-
-    .col-l-right-1{ left: 8.3333%; }
-    .col-l-right-2{ left: 16.6666%; }
-    .col-l-right-3{ left: 25%; }
-    .col-l-right-4{ left: 33.3333%; }
-    .col-l-right-5{ left: 41.6666%; }
-    .col-l-right-6{ left: 50%; }
-    .col-l-right-7{ left: 58.3333%; }
-    .col-l-right-8{ left: 66.6666%; }
-    .col-l-right-9{ left: 75%; }
-    .col-l-right-10{ left: 83.3333%; }
-    .col-l-right-11{ left: 91.6666%; }
-    .col-l-right-12{ left: 100%; }
-}
-
-/* --- 自适应的 */
 .row .col-auto{
     flex: 1 1 auto;
     max-width: 100%;
 }
 
-/* --- 固定的 */
 .row .col-1{
     flex: 0 0 8.3333%;
     max-width: 8.3333%;
@@ -1197,7 +1111,6 @@ iframe{
 
 [ks-tag~=top]:after, [ks-tag~=bottom]:after{
     left: 50%;
-    min-width: 6em;
     transform: translateX(-50%);
 }
 
