@@ -1123,6 +1123,11 @@ iframe{
     margin-left: 1rem;
 }
 
+[ks-tag~=left]:after, [ks-tag~=right]:after{
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 [ks-tag=top]:before{
     bottom: 100%;
     border-top-color: rgba(0, 0, 0, .7);
