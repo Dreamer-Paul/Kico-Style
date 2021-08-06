@@ -4,7 +4,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2021.8.5
+# Last Update: 2021.8.6
 
 一个可口的极简响应式前端框架。
 
@@ -87,6 +87,25 @@ html.font-l{ font-size: 18px }
 
 body::-webkit-scrollbar-track{ border-radius: 0 }
 
+/* - 辅助类 */
+.float-none{ float: none !important }
+.float-left{ float: left !important }
+.float-right{ float: right !important }
+
+.clearfix:after{
+    content: '';
+    clear: both;
+    display: block;
+}
+
+.text-left{ text-align: left !important }
+.text-right{ text-align: right !important }
+.text-center{ text-align: center !important }
+.text-justify{ text-align: justify !important }
+
+.text-break{ word-break: break-all !important }
+.text-nowrap{ white-space: nowrap !important }
+
 /* 1 - 容器
 -------------------------------- */
 .wrap{
@@ -107,22 +126,6 @@ body::-webkit-scrollbar-track{ border-radius: 0 }
     padding-left: 0;
     padding-right: 0;
 }
-
-/* - 辅助类 */
-.float-none{ float: none !important }
-.float-left{ float: left !important }
-.float-right{ float: right !important }
-
-.clearfix:after{
-    content: '';
-    clear: both;
-    display: block;
-}
-
-.text-left{ text-align: left !important }
-.text-right{ text-align: right !important }
-.text-center{ text-align: center !important }
-.text-justify{ text-align: justify !important }
 
 /* 2 - 元素
 -------------------------------- */
@@ -619,56 +622,56 @@ table{
     border: 0;
     width: 100%;
     max-width: 100%;
+    caption-side: bottom;
     border-collapse: collapse;
 }
 
-table th, table td{
-    padding: .75em;
+th:not([align]){
+    text-align: inherit;
+    text-align: -webkit-match-parent;
 }
 
-table > thead > tr{ border-bottom: 2px solid #ccc }
-table > tbody > tr{ border-bottom: 1px solid #ddd }
-table > tbody > tr:last-child{ border-bottom: 0 }
+th, td{ padding: .75em }
 
-table > tbody > tr{
+table thead tr{
+    border-bottom: 2px solid #ccc;
+    border-bottom-color: var(--gray);
+}
+table tbody tr{
+    border-bottom: 1px solid #ddd;
+    border-bottom-color: var(--light-gray);
     transition: border-color .3s, background .3s;
 }
+table tbody tr:last-child{ border-bottom: 0 }
 
-table > tbody > tr:hover{
-    background: #eee;
-}
-
-table > thead > tr > th, table > tbody > tr > th, table > tfoot > tr > th,
-table > thead > tr > td, table > tbody > tr > td, table > tfoot > tr > td{
-    white-space: nowrap;
-}
+table tbody tr:hover{ background: #eee }
 
 /* - 蓝色风格 */
 table.fill{
-    border-left-width: 1px solid transparent;
-    border-right-width: 1px solid transparent;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
 }
 
-table.fill > thead{
+table.fill thead{
     background-color: #3498db;
     background-color: var(--primary);
     border: 1px solid #3498db;
     border-color: var(--primary);
     border-bottom: none;
 }
-table.fill > thead > tr{
+table.fill thead tr{
     border-bottom: none;
 }
-table.fill > thead > tr > th, table.fill > thead > tr > td{
+table.fill thead th, table.fill thead td{
     color: #fff;
 }
 
-table.fill > tbody{
+table.fill tbody{
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
 }
-table.fill > tbody > tr:nth-child(even) > th, table.fill > tbody > tr:nth-child(even){
+table.fill tbody tr:nth-child(even) th, table.fill tbody tr:nth-child(even){
     background: #f7f7f7;
 }
 
