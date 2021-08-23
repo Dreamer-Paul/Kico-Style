@@ -4,7 +4,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2021.8.6
+# Last Update: 2021.8.23
 
 一个可口的极简响应式前端框架。
 
@@ -818,6 +818,11 @@ iframe{
 
 /* --- 手机 */
 @media screen and (min-width: 600px){
+    .row .col-s-auto{
+        flex: 1 1 auto;
+        max-width: 100%;
+    }
+
     .row .col-s-1{
         flex: 0 0 8.3333%;
         max-width: 8.3333%;
@@ -881,6 +886,11 @@ iframe{
 
 /* --- 平板 */
 @media screen and (min-width: 900px){
+    .row .col-m-auto{
+        flex: 1 1 auto;
+        max-width: 100%;
+    }
+
     .row .col-m-1{
         flex: 0 0 8.3333%;
         max-width: 8.3333%;
@@ -944,6 +954,11 @@ iframe{
 
 /* --- 电脑 */
 @media screen and (min-width: 1024px){
+    .row .col-l-auto{
+        flex: 1 1 auto;
+        max-width: 100%;
+    }
+
     .row .col-l-1{
         flex: 0 0 8.3333%;
         max-width: 8.3333%;
