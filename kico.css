@@ -4,7 +4,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2021.8.23
+# Last Update: 2021.10.3
 
 一个可口的极简响应式前端框架。
 
@@ -435,6 +435,17 @@ input[type="range"]::-moz-range-progress{
     margin-top: 0;
 }
 
+select{
+    -webkit-appearance: none;
+    appearance: none;
+    padding-right: 1.75em;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 5'%3E%3Cpath fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' d='M.5.5l4.5 4 4.5-4'/%3E%3C/svg%3E") right .5rem center/.75em no-repeat;
+}
+
+select[multiple], select[size]:not([size="1"]){
+    background: none;
+}
+
 textarea{
     display: block;
     overflow: auto;
@@ -517,6 +528,7 @@ input[type="checkbox"].switch{
     float: none;
     cursor: pointer;
     background: #eee;
+    background: var(--lighter-gray);
     position: relative;
     border-radius: 50px;
     border: 1px solid #ccc;
@@ -576,11 +588,11 @@ fieldset label{
 
 /* -- 控件标题 */
 fieldset label > span:first-child{
+    opacity: .6;
     font-size: .85em;
     white-space: nowrap;
     margin-bottom: .5rem;
     display: inline-block;
-    color: rgba(0, 0, 0, .6);
 }
 
 fieldset label.required > span:first-child:after{
@@ -644,7 +656,10 @@ table tbody tr{
 }
 table tbody tr:last-child{ border-bottom: 0 }
 
-table tbody tr:hover{ background: #eee }
+table tbody tr:hover{
+    background-color: #eee;
+    background-color: var(--lighter-gray);
+}
 
 /* - 蓝色风格 */
 table.fill{
