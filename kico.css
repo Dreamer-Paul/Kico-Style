@@ -4,7 +4,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2021.10.3
+# Last Update: 2021.11.4
 
 一个可口的极简响应式前端框架。
 
@@ -697,22 +697,28 @@ iframe{
 
 /* - 栅格系统 */
 .row{
+    row-gap: 2em;
     display: flex;
+    margin: 0 -1em;
     flex-wrap: wrap;
-    margin: 0 -1em -2em;
 }
 
-.row.s{ margin: 0 -.5em -1em }
-.row.m{ margin: 0 -1.25em -2.5em }
-.row.l{ margin: 0 -1.5em -3em }
-.row.full{ margin: 0 }
-.row.clear{ margin-bottom: 0 }
+.row.s{
+    row-gap: 1em;
+    margin: 0 -.5em;
+}
+.row.m{
+    row-gap: 2.5em;
+    margin: 0 -1.25em;
+}
+.row.l{
+    row-gap: 3em;
+    margin: 0 -1.5em;
+}
 
-.row.scrollable{
-    overflow: auto;
-    margin-left: 0;
-    margin-right: 0;
-    flex-wrap: nowrap;
+.row.full{
+    row-gap: 0;
+    margin: 0;
 }
 
 /* -- 对齐方式 */
@@ -726,42 +732,41 @@ iframe{
     flex: 0 0 100%;
     padding: 0 1em;
     max-width: 100%;
-    margin-bottom: 2em;
 }
 
 .row.s > [class*="col-"]{
     padding: 0 .5em;
-    margin-bottom: 1em;
 }
 .row.m > [class*="col-"]{
     padding: 0 1.25em;
-    margin-bottom: 2.5em;
 }
 .row.l > [class*="col-"]{
     padding: 0 1.5em;
-    margin-bottom: 3em;
 }
 .row.full > [class*="col-"]{
     padding: 0;
-    margin-bottom: 0;
 }
 
 /* -- 自适应间距栅格 */
 @media screen and (max-width: 600px){
-    .row.auto{ margin: 0 -.5em -1em }
+    .row.auto{
+        row-gap: 1em;
+        margin: 0 -.5em;
+    }
 
     .row.auto > [class*="col-"]{
         padding: 0 .5em;
-        margin-bottom: 1em;
     }
 }
 
 @media screen and (min-width: 1920px){
-    .row.auto{ margin: 0 -1.25em -2.5em }
+    .row.auto{
+        row-gap: 2.5em;
+        margin: 0 -1.25em;
+    }
 
     .row.auto > [class*="col-"]{
         padding: 0 1.25em;
-        margin-bottom: 2.5em;
     }
 }
 
