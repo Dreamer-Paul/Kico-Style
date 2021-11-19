@@ -4,7 +4,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2021.11.4
+# Last Update: 2021.11.19
 
 一个可口的极简响应式前端框架。
 
@@ -25,18 +25,6 @@ fieldset, legend, figure{
 
 *, *:before, *:after{ box-sizing: border-box }
 
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section{ display: block }
-
-html{
-    color: #353535;
-    scroll-behavior: smooth;
-    font: 16px/1.5 'Microsoft Yahei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
-}
-
-html.font-s{ font-size: 14px }
-html.font-m{ font-size: 16px }
-html.font-l{ font-size: 18px }
-
 :root{
     /* 内设颜色 */
     --red: #ea644a;
@@ -48,16 +36,24 @@ html.font-l{ font-size: 18px }
     --light-gray: #ddd;
     --lighter-gray: #eee;
 
-    --primary: var(--blue); /* 主色 */
-    --secondly: var(--yellow); /* 次色 */
+    /* 主色 */
+    --primary: var(--blue);
+    /* 次色 */
+    --secondly: var(--yellow);
 }
 
-@media screen and (max-width: 768px){
-    html.font-auto{ font-size: 14px }
+@media (prefers-reduced-motion: no-preference){
+    :root{
+        scroll-behavior: smooth;
+    }
 }
 
-@media screen and (min-width: 1921px){
-    html.font-auto{ font-size: 18px }
+body{
+    color: #353535;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    font: 16px/1.5 'Microsoft Yahei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
 }
 
 /* - 选择内容 */
@@ -96,6 +92,18 @@ body::-webkit-scrollbar-track{ border-radius: 0 }
     content: '';
     clear: both;
     display: block;
+}
+
+.font-s{ font-size: 14px }
+.font-m{ font-size: 16px }
+.font-l{ font-size: 18px }
+
+@media screen and (max-width: 768px){
+    .font-auto{ font-size: 14px }
+}
+
+@media screen and (min-width: 1921px){
+    .font-auto{ font-size: 18px }
 }
 
 .text-left{ text-align: left !important }
@@ -299,7 +307,7 @@ a, .btn{
     -webkit-transition: color .3s, background .3s;
 }
 
-/* - 引用*/
+/* - 引用 */
 blockquote{
     margin: 0 0 1em;
     line-height: 1.8;
@@ -1172,7 +1180,10 @@ iframe{
 
 /* - 漂浮提示 */
 [ks-tag]{ position: relative }
-[ks-tag]:before, [ks-tag]:after{ position: absolute }
+[ks-tag]:before, [ks-tag]:after{
+    position: absolute;
+    pointer-events: none;
+}
 
 /* -- 小箭头 */
 [ks-tag]:before{
@@ -1258,10 +1269,9 @@ iframe{
     opacity: 0;
     z-index: 1;
     color: #fff;
-    font-size: .85em;
-    border-radius: .5em;
+    font-size: .85rem;
     white-space: nowrap;
-    pointer-events: none;
+    border-radius: .5rem;
     padding: .25rem .5rem;
     content: attr(ks-text);
     transition: opacity .3s;
