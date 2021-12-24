@@ -4,7 +4,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2021.11.19
+# Last Update: 2021.12.24
 
 一个可口的极简响应式前端框架。
 
@@ -40,20 +40,27 @@ fieldset, legend, figure{
     --primary: var(--blue);
     /* 次色 */
     --secondly: var(--yellow);
+    /* 圆角 */
+    --radius: .5em;
 }
 
-@media (prefers-reduced-motion: no-preference){
-    :root{
-        scroll-behavior: smooth;
-    }
-}
-
-body{
+:root{
     color: #353535;
-    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
     font: 16px/1.5 'Microsoft Yahei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+}
+
+@media screen and (max-width: 768px){
+    :root.font-auto{ font-size: 14px }
+}
+
+@media screen and (min-width: 1921px){
+    :root.font-auto{ font-size: 18px }
+}
+
+@media (prefers-reduced-motion: no-preference){
+    :root{ scroll-behavior: smooth }
 }
 
 /* - 选择内容 */
@@ -94,17 +101,9 @@ body::-webkit-scrollbar-track{ border-radius: 0 }
     display: block;
 }
 
-.font-s{ font-size: 14px }
-.font-m{ font-size: 16px }
-.font-l{ font-size: 18px }
-
-@media screen and (max-width: 768px){
-    .font-auto{ font-size: 14px }
-}
-
-@media screen and (min-width: 1921px){
-    .font-auto{ font-size: 18px }
-}
+.font-s{ font-size: .875em }
+.font-m{ font-size: 1.125em }
+.font-l{ font-size: 1.25em }
 
 .text-left{ text-align: left !important }
 .text-right{ text-align: right !important }
@@ -169,6 +168,7 @@ em, mark, kbd{
     font-size: .85em;
     padding: .25em .5em;
     border-radius: .5em;
+    border-radius: var(--radius);
 }
 
 em{
@@ -214,6 +214,7 @@ article ul, article ol, article dl{ line-height: 1.8 }
 
 /* - 按钮 */
 button{
+    margin: 0;
     outline: 0;
     font: inherit;
 }
@@ -223,7 +224,8 @@ button{
     cursor: pointer;
     background: #fff;
     padding: .5em 1em;
-    border-radius: 4px;
+    border-radius: .5em;
+    border-radius: var(--radius);
     display: inline-block;
     border: 1px solid transparent;
 }
@@ -269,6 +271,7 @@ pre, code{ font-family: 'Consolas', 'Courier New', monospace }
     font-size: 85%;
     word-wrap: normal;
     border-radius: .5em;
+    border-radius: var(--radius);
     padding: .25em .5em;
     word-break: break-all;
     background-color: #f7f2f4;
@@ -282,7 +285,8 @@ pre > code{
     overflow-x: auto;
     word-break: normal;
     font-size: inherit;
-    border-radius: 5px;
+    border-radius: .5em;
+    border-radius: var(--radius);
     background-color: #333;
 }
 
@@ -347,7 +351,8 @@ input[type*="date"], input[type="email"], input[type="month"], input[type="numbe
 select, textarea{
     padding: .5em;
     color: inherit;
-    border-radius: 4px;
+    border-radius: .5em;
+    border-radius: var(--radius);
     border: #ccc 1px solid;
     border-color: var(--gray);
     min-height: calc(2.5em + 2px);
@@ -362,10 +367,13 @@ input.invalid, input:out-of-range{
     color: #fff;
     border: none;
     outline: none;
-    display: block;
     padding: .5em 1em;
-    background: #3498db;
+    margin-right: .5em;
+    display: inline-block;
     border-radius: .5em;
+    border-radius: var(--radius);
+    background-color: #3498db;
+    background-color: var(--primary);
 }
 
 input[type="range"]{
@@ -386,61 +394,66 @@ input[type="range"]:focus{
 
 input[type="range"]:active::-webkit-slider-thumb{
     border-color: #3498db;
+    border-color: var(--primary);
     background-color: #3498db;
+    background-color: var(--primary);
 }
 
 input[type="range"]:active::-moz-range-thumb{
     border-color: #3498db;
+    border-color: var(--primary);
     background-color: #3498db;
+    background-color: var(--primary);
 }
 
 input[type="range"]:focus::-ms-thumb{
-    border-color: #9C27B0;
-    background-color: #673AB7;
+    border-color: #9c27b0;
+    background-color: #673ab7;
 }
 
 input[type="range"]::-moz-focus-outer{ border: 0 }
 
 input[type="range"]::-webkit-slider-runnable-track{
-    background: #3498db;
     content: '';
     height: 2px;
     pointer-events: none;
+    background-color: #3498db;
+    background-color: var(--primary);
 }
 
 input[type="range"]::-webkit-slider-thumb{
-    width: 14px;
-    height: 14px;
+    width: 1em;
+    height: 1em;
     -webkit-appearance: none;
     appearance: none;
     background: #fff;
-    border-radius: 50px;
-    margin-top: -6px;
+    border-radius: 5em;
+    margin-top: calc(-.5em + 1px);
     border: 1px solid rgba(0, 0, 0, .15);
     transition: .3s border-color, .3s background-color;
 }
 
 input[type="range"]::-moz-range-track{
-    width: 240px;
     height: 2px;
     background: rgba(0, 50, 126, .12);
 }
 
 input[type="range"]::-moz-range-thumb{
-    width: 14px;
-    height: 14px;
+    width: 1em;
+    height: 1em;
     background: #fff;
-    border-radius: 50px;
-    border: 1px solid rgba(0, 30, 75, .12);
-    position: relative;
+    border-radius: 5em;
+    margin-top: calc(-.5em + 1px);
+    border: 1px solid rgba(0, 0, 0, .15);
     transition: .3s border-color, .3s background-color;
 }
 
 input[type="range"]::-moz-range-progress{
-    height: 2px;
-    background: #467fcf;
     border: 0;
+    height: 2px;
     margin-top: 0;
+    background-color: #3498db;
+    background-color: var(--primary);
 }
 
 select{
@@ -512,8 +525,8 @@ input[type="radio"], input[type="radio"]:before{ border-radius: 100% }
 input[type="checkbox"], input[type="checkbox"]:before{ border-radius: .2em }
 
 input[type="radio"]:checked:before{
-    background: #3498db;
-    background: var(--primary);
+    background-color: #3498db;
+    background-color: var(--primary);
     border: 2px solid #3498db;
     border-color: var(--primary);
     box-shadow: 0 0 0 .2em #fff inset;
@@ -521,8 +534,8 @@ input[type="radio"]:checked:before{
 
 input[type="checkbox"]:checked:before{
     box-shadow: none;
-    background: #3498db;
-    background: var(--primary);
+    background-color: #3498db;
+    background-color: var(--primary);
 }
 
 input[type="checkbox"]:checked:after{
@@ -563,8 +576,8 @@ input[type="checkbox"].switch:after{ content: normal }
 
 input[type="checkbox"].switch:checked{
     box-shadow: none;
-    background: #3498db;
-    background: var(--primary);
+    background-color: #3498db;
+    background-color: var(--primary);
     border-color: #3498db;
     border-color: var(--primary);
 }
