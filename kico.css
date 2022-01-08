@@ -4,7 +4,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2021.12.24
+# Last Update: 2022.1.8
 
 一个可口的极简响应式前端框架。
 
@@ -14,10 +14,9 @@
 
 /* 0 - 全局
 -------------------------------- */
-html, body,
-dl, dt, dd, ol, ul,
-h1, h2, h3, h4, h5, h6,
-pre, code, form, p,
+body, dl, dt, dd, ol, ul,
+h1, h2, h3, h4, h5, h6, p,
+pre, code, form,
 fieldset, legend, figure{
     margin: 0;
     padding: 0;
@@ -264,7 +263,20 @@ button{
 .btn.transparent{ background: transparent }
 
 /* - 代码 */
-pre, code{ font-family: 'Consolas', 'Courier New', monospace }
+pre, code{
+    word-break: normal;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+pre{
+    tab-size: 4;
+    padding: 1em;
+    color: #fff;
+    overflow: auto;
+    background-color: #333;
+    border-radius: .5em;
+    border-radius: var(--radius);
+}
 
 :not(pre) > code{
     color: #c40b00;
@@ -275,19 +287,6 @@ pre, code{ font-family: 'Consolas', 'Courier New', monospace }
     padding: .25em .5em;
     word-break: break-all;
     background-color: #f7f2f4;
-}
-
-pre > code{
-    color: #fff;
-    tab-size: 4;
-    padding: 1em;
-    display: block;
-    overflow-x: auto;
-    word-break: normal;
-    font-size: inherit;
-    border-radius: .5em;
-    border-radius: var(--radius);
-    background-color: #333;
 }
 
 /* - 项目列表 */
