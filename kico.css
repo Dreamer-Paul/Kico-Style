@@ -4,7 +4,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2022.6.12
+# Last Update: 2022.6.29
 
 一个可口的极简响应式前端框架。
 
@@ -1444,7 +1444,7 @@ notice{
     animation-play-state: running;
 }
 
-.ks-image img{
+.ks-image img, .ks-image video{
     top: 0;
     left: 0;
     right: 0;
@@ -1458,15 +1458,26 @@ notice{
     animation: fade-small-large .3s backwards;
     -webkit-animation: fade-small-large .3s backwards;
 }
-.ks-image.remove img, .ks-image.remove .ks-prev, .ks-image.remove .ks-next{
+
+.ks-image video{
+    cursor: auto;
+}
+
+.ks-image img:not([src]), .ks-image video:not([src]){
+    display: none;
+}
+
+.ks-image.remove img, .ks-image.remove video, .ks-image.remove .ks-prev, .ks-image.remove .ks-next{
     animation: fade-large-small .3s both;
     -webkit-animation: fade-large-small .3s both;
 }
 
-.ks-image img[src$=".jpg"]{ box-shadow: 0 5px 15px rgba(0, 0, 0, .5) }
+.ks-image img[src$=".jpg"], .ks-image video{
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+}
 
 /* ----
 
-Copyright (C) 2021 Dreamer-Paul.
+Copyright (C) 2022 Dreamer-Paul.
 
 ---- */

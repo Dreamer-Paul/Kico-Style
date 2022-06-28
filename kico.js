@@ -2,7 +2,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2020.4.10
+# Last Update: 2022.6.29
 
 一个可口的极简响应式前端框架。
 
@@ -165,16 +165,19 @@ Array.prototype.remove = function (value) {
     // 灯箱
     var image_box = {
         img: KStyle.create("img"),
+        vid: KStyle.create("video"),
         prev: KStyle.create("div", {class: "ks-prev"}),
         next: KStyle.create("div", {class: "ks-next"}),
         ball: KStyle.create("div", {class: "ks-ball"})
     };
+
     image_box.wrap = KStyle.create("div", {class: "ks-image", child: [
-        image_box.prev, image_box.img, image_box.next, image_box.ball
+        image_box.prev, image_box.img, image_box.vid, image_box.next, image_box.ball
     ]});
 
     image_box.wrap.onclick = function (e) {
         image_box.wrap.classList.add("remove");
+
         setTimeout(function () {
             try{
                 document.body.removeChild(image_box.wrap);
@@ -184,7 +187,16 @@ Array.prototype.remove = function (value) {
         }, 300);
     };
 
+    image_box.img.alt = "灯箱预览";
     image_box.img.onload = function () {
+        image_box.wrap.classList.remove("loading");
+    };
+
+    image_box.vid.controls = true;
+    image_box.vid.onclick = function (ev) {
+        ev.stopPropagation();
+    }
+    image_box.vid.onloadeddata = function () {
         image_box.wrap.classList.remove("loading");
     };
 
@@ -209,7 +221,17 @@ Array.prototype.remove = function (value) {
                 current === get_images.length - 1 ? image_box.next.classList.add("ended") : image_box.next.classList.remove("ended");
 
                 if(img.getAttribute("ks-original") !== null){
-                    image_box.img.src = img.getAttribute("ks-original");
+                    const _url = img.getAttribute("ks-original");
+
+                    // 视频格式，展示成视频效果
+                    if (_url.includes("mp4")) {
+                        image_box.img.removeAttribute("src");
+                        image_box.vid.src = _url;
+                    }
+                    else {
+                        image_box.img.src = _url;
+                        image_box.vid.removeAttribute("src");
+                    }
                 }
                 else if(img.src){
                     image_box.img.src = img.src;
@@ -254,7 +276,11 @@ Array.prototype.remove = function (value) {
             setFront: function (item) {
                 if(item.intersectionRatio > 0) {
                     item.target.src = item.target.link;
-                    item.target.setAttribute("ks-lazy", "finished");
+
+                    item.target.onload = function () {
+                        item.target.setAttribute("ks-lazy", "finished");
+                    }
+
                     obs.unobserve(item.target);
                 }
             },
