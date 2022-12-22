@@ -653,32 +653,20 @@ th:not([align]){
 th, td{ padding: .75em }
 
 table thead tr{
-    border-bottom: 2px solid #ccc;
+    border-bottom: min(2px, calc(var(--border-width) * 2)) solid #ccc;
     border-bottom-color: var(--gray);
 }
 table tbody tr{
-    border-bottom: 1px solid #ddd;
-    border-bottom-color: var(--light-gray);
-    transition: border-color .3s, background .3s;
+    border-bottom: var(--border-width) solid var(--light-gray);
+    transition: border-color .3s, background-color .3s;
 }
 table tbody tr:last-child{ border-bottom: 0 }
 
-table tbody tr:hover{
-    background-color: #eee;
-    background-color: var(--lighter-gray);
-}
+table tbody tr:hover{ background-color: var(--lighter-gray) }
 
 /* - 蓝色风格 */
-table.fill{
-    border-left: 1px solid transparent;
-    border-right: 1px solid transparent;
-}
-
 table.fill thead{
-    background-color: #3498db;
     background-color: var(--primary);
-    border: 1px solid #3498db;
-    border-color: var(--primary);
     border-bottom: none;
 }
 table.fill thead tr{
@@ -688,13 +676,12 @@ table.fill thead th, table.fill thead td{
     color: #fff;
 }
 
-table.fill tbody{
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+table.fill tbody tr{
+    border-bottom: none;
 }
+
 table.fill tbody tr:nth-child(even) th, table.fill tbody tr:nth-child(even){
-    background: #f7f7f7;
+    background-color: #f7f7f7;
 }
 
 /* - 嵌入式网页 */
