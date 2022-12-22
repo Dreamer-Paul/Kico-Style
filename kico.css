@@ -4,7 +4,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2022.6.29
+# Last Update: 2022.12.23
 
 一个可口的极简响应式前端框架。
 
@@ -35,12 +35,20 @@ fieldset, legend, figure{
     --light-gray: #ddd;
     --lighter-gray: #eee;
 
-    /* 主色 */
+    /* 主色与次色 */
     --primary: var(--blue);
-    /* 次色 */
     --secondly: var(--yellow);
+
+    /* 容器 */
+    --wrapper-width: 75em;
+    --wrapper-gap: 1.25em;
+
     /* 圆角 */
     --radius: .5em;
+    --border-width: 1px;
+
+    /* 间距 */
+    --row-gap: 2em;
 }
 
 :root{
@@ -116,8 +124,8 @@ body::-webkit-scrollbar-track{ border-radius: 0 }
 -------------------------------- */
 .wrap{
     margin: 0 auto;
-    max-width: 75em;
-    padding: 0 1.25em;
+    padding: 0 var(--wrapper-gap);
+    max-width: var(--wrapper-width);
     box-sizing: content-box;
 }
 
@@ -166,14 +174,12 @@ abbr[title]{
 em, mark, kbd{
     font-size: .875em;
     padding: .25em .5em;
-    border-radius: .5em;
     border-radius: var(--radius);
 }
 
 em{
     color: #fff;
     font-style: normal;
-    background-color: #3498db;
     background-color: var(--primary);
 }
 em.red{ background: var(--red) }
@@ -191,8 +197,6 @@ img, svg, audio, video, iframe{
     max-width: 100%;
     vertical-align: middle;
 }
-
-audio, video{ outline: none }
 
 /* - 文章 */
 article{
@@ -223,10 +227,9 @@ button{
     cursor: pointer;
     background: #fff;
     padding: .5em 1em;
-    border-radius: .5em;
-    border-radius: var(--radius);
     display: inline-block;
-    border: 1px solid transparent;
+    border-radius: var(--radius);
+    border: var(--border-width) solid transparent;
 }
 .btn:hover{ color: inherit }
 
@@ -244,23 +247,11 @@ button{
 /* -- 按钮颜色 */
 .btn.red, .btn.yellow, .btn.blue, .btn.green{ color: #fff }
 
-.btn.red{
-    background: #ea644a;
-    background: var(--red);
-}
-.btn.yellow{
-    background: #ffb03a;
-    background: var(--yellow);
-}
-.btn.blue{
-    background: #3498db;
-    background: var(--blue);
-}
-.btn.green{
-    background: #27a17e;
-    background: var(--green);
-}
-.btn.transparent{ background: transparent }
+.btn.red{ background-color: var(--red) }
+.btn.yellow{ background-color: var(--yellow) }
+.btn.blue{ background-color: var(--blue) }
+.btn.green{ background-color: var(--green) }
+.btn.transparent{ background-color: transparent }
 
 /* - 代码 */
 pre, code{
@@ -274,7 +265,6 @@ pre{
     color: #fff;
     overflow: auto;
     background-color: #333;
-    border-radius: .5em;
     border-radius: var(--radius);
 }
 
@@ -282,7 +272,6 @@ pre{
     color: #c40b00;
     font-size: 85%;
     word-wrap: normal;
-    border-radius: .5em;
     border-radius: var(--radius);
     padding: .25em .5em;
     word-break: break-all;
@@ -303,12 +292,7 @@ dl dd:before{
 }
 
 /* - 补间动画 */
-a, .btn{
-    transition: color .3s, background .3s;
-    -o-transition: color .3s, background .3s;
-    -moz-transition: color .3s, background .3s;
-    -webkit-transition: color .3s, background .3s;
-}
+a, .btn{ transition: color .3s, background .3s }
 
 /* - 引用 */
 blockquote{
@@ -330,7 +314,7 @@ cite{
 hr{
     border: 0;
     margin: 1.5em 0;
-    border-top: 1px #ccc solid;
+    border-top: var(--border-width) var(--gray) solid;
 }
 
 /* - 表单 */
@@ -351,11 +335,10 @@ input[type*="date"], input[type="email"], input[type="month"], input[type="numbe
 select, textarea{
     padding: .5em;
     color: inherit;
-    border-radius: .5em;
     border-radius: var(--radius);
-    border: #ccc 1px solid;
-    border-color: var(--gray);
-    min-height: calc(2.5em + 2px);
+    border: var(--border-width) var(--gray) solid;
+    /* 旧版本浏览器可能部分输入框会塌陷 */
+    min-height: calc(2.5em + calc(var(--border-width) * 2));
 }
 
 input.invalid, input:out-of-range{
@@ -370,9 +353,7 @@ input.invalid, input:out-of-range{
     padding: .5em 1em;
     margin-right: .5em;
     display: inline-block;
-    border-radius: .5em;
     border-radius: var(--radius);
-    background-color: #3498db;
     background-color: var(--primary);
 }
 
@@ -388,21 +369,17 @@ input[type="range"]{
 }
 
 input[type="range"]:focus{
-    box-shadow: none;
     outline: none;
+    box-shadow: none;
 }
 
 input[type="range"]:active::-webkit-slider-thumb{
-    border-color: #3498db;
     border-color: var(--primary);
-    background-color: #3498db;
     background-color: var(--primary);
 }
 
 input[type="range"]:active::-moz-range-thumb{
-    border-color: #3498db;
     border-color: var(--primary);
-    background-color: #3498db;
     background-color: var(--primary);
 }
 
@@ -415,9 +392,8 @@ input[type="range"]::-moz-focus-outer{ border: 0 }
 
 input[type="range"]::-webkit-slider-runnable-track{
     content: '';
-    height: 2px;
+    height: calc(var(--border-width) * 2);
     pointer-events: none;
-    background-color: #3498db;
     background-color: var(--primary);
 }
 
@@ -428,8 +404,8 @@ input[type="range"]::-webkit-slider-thumb{
     appearance: none;
     background: #fff;
     border-radius: 5em;
-    margin-top: calc(-.5em + 1px);
-    border: 1px solid rgba(0, 0, 0, .15);
+    margin-top: calc(-.5em + var(--border-width));
+    border: var(--border-width) solid rgba(0, 0, 0, .15);
     transition: .3s border-color, .3s background-color;
 }
 
@@ -443,8 +419,8 @@ input[type="range"]::-moz-range-thumb{
     height: 1em;
     background: #fff;
     border-radius: 5em;
-    margin-top: calc(-.5em + 1px);
-    border: 1px solid rgba(0, 0, 0, .15);
+    margin-top: calc(-.5em + var(--border-width));
+    border: var(--border-width) solid rgba(0, 0, 0, .15);
     transition: .3s border-color, .3s background-color;
 }
 
@@ -452,7 +428,6 @@ input[type="range"]::-moz-range-progress{
     border: 0;
     height: 2px;
     margin-top: 0;
-    background-color: #3498db;
     background-color: var(--primary);
 }
 
@@ -501,10 +476,8 @@ input[type="checkbox"]:before, input[type="radio"]:before{
     width: 100%;
     height: 100%;
     display: block;
-    border-radius: .2em;
-    box-shadow: 0 0 0 1px #ccc inset;
-    box-shadow: 0 0 0 1px var(--gray) inset;
-    transition: background .3s, box-shadow .3s;
+    box-shadow: 0 0 0 var(--border-width) var(--gray) inset;
+    transition: background-color .3s, box-shadow .3s;
 }
 
 input[type="checkbox"]:after{
@@ -525,16 +498,13 @@ input[type="radio"], input[type="radio"]:before{ border-radius: 100% }
 input[type="checkbox"], input[type="checkbox"]:before{ border-radius: .2em }
 
 input[type="radio"]:checked:before{
-    background-color: #3498db;
     background-color: var(--primary);
-    border: 2px solid #3498db;
-    border-color: var(--primary);
+    border: var(--border-width) solid var(--primary);
     box-shadow: 0 0 0 .2em #fff inset;
 }
 
 input[type="checkbox"]:checked:before{
     box-shadow: none;
-    background-color: #3498db;
     background-color: var(--primary);
 }
 
@@ -548,14 +518,12 @@ input[type="checkbox"].switch{
     height: 2em;
     float: none;
     cursor: pointer;
-    background: #eee;
-    background: var(--lighter-gray);
     position: relative;
-    border-radius: 50px;
-    border: 1px solid #ccc;
-    border-color: var(--gray);
+    border-radius: 50em;
     box-sizing: content-box;
-    transition: border .3s, background .3s;
+    border: var(--border-width) solid var(--gray);
+    background-color: var(--lighter-gray);
+    transition: border .3s, background-color .3s;
 }
 
 input[type="checkbox"].switch:before{
@@ -576,10 +544,8 @@ input[type="checkbox"].switch:after{ content: normal }
 
 input[type="checkbox"].switch:checked{
     box-shadow: none;
-    background-color: #3498db;
-    background-color: var(--primary);
-    border-color: #3498db;
     border-color: var(--primary);
+    background-color: var(--primary);
 }
 
 input.switch:checked:before{
@@ -604,7 +570,6 @@ fieldset input:not([type="checkbox"]):not([type="radio"]), fieldset select, fiel
 fieldset label{
     display: block;
     user-select: none;
-    margin-bottom: 1em;
 }
 
 /* -- 控件标题 */
@@ -634,7 +599,7 @@ form .inline label, fieldset.inline label{
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
-    border-radius: 5px;
+    border-radius: var(--radius);
 }
 
 table{
@@ -653,7 +618,7 @@ th:not([align]){
 th, td{ padding: .75em }
 
 table thead tr{
-    border-bottom: min(2px, calc(var(--border-width) * 2)) solid #ccc;
+    border-bottom: min(2px, calc(var(--border-width) * 2)) solid var(--gray);
     border-bottom-color: var(--gray);
 }
 table tbody tr{
@@ -691,10 +656,10 @@ iframe{
 
 /* - 栅格系统 */
 .row{
-    row-gap: 2em;
     display: flex;
-    margin: 0 -1em;
     flex-wrap: wrap;
+    row-gap: var(--row-gap);
+    margin: 0 calc(var(--row-gap) / 2 * -1);
 }
 
 .row.s{
@@ -724,7 +689,7 @@ iframe{
 /* -- 网格间距 */
 .row > [class*="col-"]{
     flex: 0 0 100%;
-    padding: 0 1em;
+    padding: 0 calc(var(--row-gap) / 2);
     max-width: 100%;
 }
 
