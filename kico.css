@@ -622,20 +622,6 @@ fieldset label.required > span:first-child:after{
     margin-left: .25em;
 }
 
-/* -- 单行组合 */
-fieldset .has-group{ display: flex }
-
-fieldset .has-group input:not([type="checkbox"]):not([type="radio"]){
-    width: auto;
-    flex: 1 1 auto;
-    border-right: none;
-}
-
-fieldset .has-group .btn{
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
 /* -- 单行表单 */
 form .inline label, fieldset.inline label{
     display: inline-block;
