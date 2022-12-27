@@ -4,7 +4,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2022.12.23
+# Last Update: 2022.12.27
 
 一个可口的极简响应式前端框架。
 
@@ -346,15 +346,37 @@ input.invalid, input:out-of-range{
     background: rgba(255, 0, 0, .1);
 }
 
-::-webkit-file-upload-button{
+input[type="file"]{
+    display: flex;
+    align-items: center;
+}
+
+input[type="file"]::-webkit-file-upload-button{
     color: #fff;
     border: none;
     outline: none;
     padding: .5em 1em;
+    font-size: inherit;
     margin-right: .5em;
     display: inline-block;
     border-radius: var(--radius);
     background-color: var(--primary);
+}
+
+input[type="color"]{
+    width: 3em !important;
+    height: 3em !important;
+    border: none;
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper{
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch{
+    border: none;
+    border-radius: var(--radius);
 }
 
 input[type="range"]{
