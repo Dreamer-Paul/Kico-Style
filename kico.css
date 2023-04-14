@@ -4,7 +4,7 @@
 
 # Kico Style 1.0
 # By: Dreamer-Paul
-# Last Update: 2022.12.27
+# Last Update: 2023.4.14
 
 一个可口的极简响应式前端框架。
 
@@ -25,26 +25,36 @@ fieldset, legend, figure{
 *, *:before, *:after{ box-sizing: border-box }
 
 :root{
-    /* 内设颜色 */
+    /* 内设配色方案 */
     --red: #ea644a;
+    --red-color: #fff;
+
     --yellow: #ffb03a;
+    --yellow-color: #fff;
+
     --blue: #3498db;
+    --blue-color: #fff;
+
     --green: #27a17e;
+    --green-color: #fff;
+
+    --primary: var(--blue);
+    --primary-color: var(--blue-color);
+
+    --secondly: var(--yellow);
+    --secondly-color: var(--yellow-color);
 
     --gray: #ccc;
     --light-gray: #ddd;
     --lighter-gray: #eee;
 
-    /* 主色与次色 */
-    --primary: var(--blue);
-    --secondly: var(--yellow);
-
     /* 容器 */
     --wrapper-width: 75em;
     --wrapper-gap: 1.25em;
-
-    /* 圆角 */
+    
+    /* 边框 */
     --radius: .5em;
+    --border-color: transparent;
     --border-width: 1px;
 
     /* 间距 */
@@ -119,6 +129,11 @@ body::-webkit-scrollbar-track{ border-radius: 0 }
 
 .text-break{ word-break: break-all !important }
 .text-nowrap{ white-space: nowrap !important }
+.text-ellipsis{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 
 /* 1 - 容器
 -------------------------------- */
@@ -178,14 +193,26 @@ em, mark, kbd{
 }
 
 em{
-    color: #fff;
+    color: var(--primary-color);
     font-style: normal;
     background-color: var(--primary);
 }
-em.red{ background: var(--red) }
-em.yellow{ background: var(--yellow) }
-em.blue{ background: var(--blue) }
-em.green{ background: var(--green) }
+em.red{
+    color: var(--red-color);
+    background: var(--red);
+}
+em.yellow{
+    color: var(--yellow-color);
+    background: var(--yellow);
+}
+em.blue{
+    color: var(--blue-color);
+    background: var(--blue);
+}
+em.green{
+    color: var(--green-color);
+    background: var(--green);
+}
 
 kbd{
     color: #fff;
@@ -229,7 +256,7 @@ button{
     padding: .5em 1em;
     display: inline-block;
     border-radius: var(--radius);
-    border: var(--border-width) solid transparent;
+    border: var(--border-width) solid var(--border-color);
 }
 .btn:hover{ color: inherit }
 
@@ -245,12 +272,30 @@ button{
 .btn.large{ font-size: 1.2em }
 
 /* -- 按钮颜色 */
-.btn.red, .btn.yellow, .btn.blue, .btn.green{ color: #fff }
-
-.btn.red{ background-color: var(--red) }
-.btn.yellow{ background-color: var(--yellow) }
-.btn.blue{ background-color: var(--blue) }
-.btn.green{ background-color: var(--green) }
+.btn.red{
+    color: var(--red-color);
+    background-color: var(--red);
+}
+.btn.yellow{
+    color: var(--yellow-color);
+    background-color: var(--yellow);
+}
+.btn.blue{
+    color: var(--blue-color);
+    background-color: var(--blue);
+}
+.btn.green{
+    color: var(--green-color);
+    background-color: var(--green);
+}
+.btn.primary{
+    color: var(--primary-color);
+    background-color: var(--primary);
+}
+.btn.secondly{
+    color: var(--secondly-color);
+    background-color: var(--secondly);
+}
 .btn.transparent{ background-color: transparent }
 
 /* - 代码 */
@@ -292,7 +337,7 @@ dl dd:before{
 }
 
 /* - 补间动画 */
-a, .btn{ transition: color .3s, background .3s }
+a, .btn{ transition: color .3s, background-color .3s }
 
 /* - 引用 */
 blockquote{
@@ -305,7 +350,6 @@ blockquote{
 }
 
 cite{
-    color: #3498db;
     color: var(--primary);
     font-style: normal;
 }
@@ -339,6 +383,9 @@ select, textarea{
     border: var(--border-width) var(--gray) solid;
     /* 旧版本浏览器可能部分输入框会塌陷 */
     min-height: calc(2.5em + calc(var(--border-width) * 2));
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 input.invalid, input:out-of-range{
@@ -346,7 +393,7 @@ input.invalid, input:out-of-range{
     background: rgba(255, 0, 0, .1);
 }
 
-input[type="file"]{
+input[type="file"]:not([hidden]){
     display: flex;
     align-items: center;
 }
@@ -372,6 +419,10 @@ input[type="color"]{
 
 input[type="color"]::-webkit-color-swatch-wrapper{
     padding: 0;
+}
+
+input[type="color"]::-moz-color-swatch{
+    border: none;
 }
 
 input[type="color"]::-webkit-color-swatch{
@@ -406,8 +457,8 @@ input[type="range"]:active::-moz-range-thumb{
 }
 
 input[type="range"]:focus::-ms-thumb{
-    border-color: #9c27b0;
-    background-color: #673ab7;
+    border-color: var(--primary);
+    background-color: var(--primary);
 }
 
 input[type="range"]::-moz-focus-outer{ border: 0 }
@@ -541,8 +592,8 @@ input[type="checkbox"].switch{
     float: none;
     cursor: pointer;
     position: relative;
-    border-radius: 50em;
     box-sizing: content-box;
+    border-radius: calc(var(--radius) * 10);
     border: var(--border-width) solid var(--gray);
     background-color: var(--lighter-gray);
     transition: border .3s, background-color .3s;
@@ -558,8 +609,8 @@ input[type="checkbox"].switch:before{
     box-shadow: none;
     background: #fff;
     position: absolute;
-    border-radius: 100%;
     transition: transform .3s;
+    border-radius: calc(var(--radius) * 10);
 }
 
 input[type="checkbox"].switch:after{ content: normal }
@@ -1154,19 +1205,19 @@ iframe{
 /* - 漂浮提示 */
 [ks-tag]{ position: relative }
 [ks-tag]:before, [ks-tag]:after{
+    z-index: 1;
+    opacity: 0;
     position: absolute;
     pointer-events: none;
+    transition: opacity .3s;
 }
 
 /* -- 小箭头 */
 [ks-tag]:before{
     width: 0;
     height: 0;
-    opacity: 0;
     content: '';
-    position: absolute;
-    transition: opacity .3s;
-    border: .5rem solid transparent;
+    border: .5rem solid var(--border-color);
 }
 
 [ks-tag~=top]:before{
@@ -1239,15 +1290,12 @@ iframe{
 [ks-text]:hover:before, [ks-text]:hover:after{ opacity: 1 }
 
 [ks-text]:after{
-    opacity: 0;
-    z-index: 1;
     color: #fff;
     font-size: .85rem;
     white-space: nowrap;
     border-radius: .5rem;
     padding: .25rem .5rem;
     content: attr(ks-text);
-    transition: opacity .3s;
     background: rgba(0, 0, 0, .7);
 }
 
@@ -1264,7 +1312,7 @@ notice{
 }
 
 .ks-notice{
-    color: #fff;
+    color: var(--primary-color);
     display: table;
     background: #333;
     border-radius: 3em;
@@ -1282,22 +1330,22 @@ notice{
 
 /* -- 弹窗颜色 */
 .ks-notice.red{
-    background: #ea644a;
+    color: var(--red-color);
     background: var(--red);
 }
 
 .ks-notice.yellow{
-    background: #ffb03a;
+    color: var(--yellow-color);
     background: var(--yellow);
 }
 
 .ks-notice.blue{
-    background: #3498db;
+    color: var(--blue-color);
     background: var(--blue);
 }
 
 .ks-notice.green{
-    background: #27a17e;
+    color: var(--green-color);
     background: var(--green);
 }
 
@@ -1438,6 +1486,6 @@ notice{
 
 /* ----
 
-Copyright (C) 2022 Dreamer-Paul.
+Copyright (C) 2023 Dreamer-Paul.
 
 ---- */
